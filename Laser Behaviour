@@ -1,0 +1,24 @@
+void ShootLaser()
+    {
+        // Defines the laser shot movement and destroys the object when it's not visible on the screen anymore
+        // If statements for the triple shot depending of its position
+        if (transform.position == new Vector3(0.004f, 0.9f, 0))
+        {
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        }
+        else if (transform.position == new Vector3(0.4f, 0.8f, 0f))
+        {
+            transform.Translate((Vector3.up + Vector3.right) * _speed * Time.deltaTime);
+        }
+        else if (transform.position == new Vector3(-0.4f, 0.8f, 0))
+        {
+            transform.Translate((Vector3.up + Vector3.left) * _speed * Time.deltaTime);
+        }
+
+        //transform.Translate(Vector3.up * _velocidade * Time.deltaTime);
+        if (transform.position.y > 6.0f)
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
