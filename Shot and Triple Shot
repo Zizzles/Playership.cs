@@ -1,0 +1,21 @@
+    void Shoot()
+    {
+        // Method created to shoot when pressing X and define a wait time for the player to be able to shoot again
+        // The method is also used to define the triple shot
+
+        if (Input.GetKeyDown(KeyCode.X) && Time.time > _tempoParaAtirar)
+        {
+            if (canTripleShot == false)
+            {
+                _timeToShoot = Time.time + _cooldown;
+                Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.951f, 0), Quaternion.identity);
+            }
+            else if (podeAtirarTriplo == true)
+            {
+                _timeToShoot = Time.time + _cooldown;
+                Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.9f, 0), Quaternion.Euler(new Vector3(0f, 0f, 0f)));
+                Instantiate(_laserPrefab, transform.position + new Vector3(0.4f, 0.8f, 0), Quaternion.Euler(new Vector3(0f, 0f, -45f)));
+                Instantiate(_laserPrefab, transform.position + new Vector3(-0.4f, -0.8f, 0), Quaternion.Euler(new Vector3(0f, 0f, 45f)));
+            }
+        }
+    }
